@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <!-- Industry Theme -->
+    <title>{{^page.is_homepage}}{{page.title}} - {{/page.is_homepage}}{{site.title}}</title>
+    {{{site.meta}}}
+
+    <!-- CSS
+    ================================================== -->
+    {{{customize.css.basic}}}
+    {{{theme.css}}}
+    {{{customize.css.advanced}}}
+    
+    <!-- IE
+    ================================================== -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {{{site.scripts.libs}}}
+    {{{site.scripts.head}}}
+</head>
+<body>
+
+    <div class="main-container">
+        
+        {{#site.has_store}}
+        <div class="store-cart">
+        <a href="{{site.store_url}}/cart" class="cart-link cart-link-large {{#site.link_to_cart}}show-cart{{/site.link_to_cart}}" data-icon="$">
+            <span></span><p class="label">View Your Cart</p>
+        </a>
+        </div>
+        {{/site.has_store}}
+        
+        <div class="wrapper">
+
+        	<!-- Primary Page Layout
+        	================================================== -->
+        	
+            <header id="site-header" class="{{#page.images.header.sizes}}has-header-image{{/page.images.header.sizes}}">
+                
+                <div class="logo">
+                    {{^customize.images.logo.url}}
+                    <!--No Logo-->
+                    <h1><a href="{{site.url}}">{{site.title}}</a></h1>
+                    {{/customize.images.logo.url}}
+                    {{#customize.images.logo.url}}
+                    <!--Logo Uploaded-->
+                    <h1><a href="{{site.url}}" title="Home"><img src="{{customize.images.logo.url}}" alt="{{site.title}}"></a></h1>
+                    {{/customize.images.logo.url}}
+                </div>
+                
+                <nav id="main-nav">
+					<div class="wraparound">
+	                    <span class="toggle">
+	                        <a href="#open-close" data-icon="≡">Menu</a>
+	                    </span>
+	                    <ul id="menu">
+	                        {{#site.nav}}
+	                            {{#section}}
+	                            <li class="section page_title open">
+	                                <span>{{title}}</span>
+	                                <ul>
+	                                    {{#pages}}
+	                                    <li class="{{#current}}current{{/current}} page page_in_a_section"><a href="{{url}}" {{#target}}target="{{target}}"{{/target}}>{{title}}</a></li>
+	                                    {{/pages}}
+	                                </ul>
+	                            </li>
+	                            {{/section}}
+	                            {{^section}}
+	                            <li class="{{#current}}current{{/current}} page page_title"><a href="{{url}}" {{#target}}target="{{target}}"{{/target}}>{{title}}</a></li>
+	                            {{/section}}
+	                        {{/site.nav}}
+                            {{#site.has_store}}
+                            <li class="store{{#site.link_to_cart}} show-cart{{/site.link_to_cart}}">
+                                <a href="{{site.store_url}}/cart" class="cart-link cart-link-small {{#site.link_to_cart}}show-cart{{/site.link_to_cart}}" data-icon="$"><span></span><p class="label">View Your Cart</p></a>
+                            </li>
+                            {{/site.has_store}}
+	                    </ul>
+					</div>
+                </nav>
+                                
+            </header>
+
+        </div>
+
+        {{#page.images.header.sizes}}
+        <div class="header-image">
+            <img src="{{page.images.header.sizes.resize_1600.url}}" />
+        </div>
+        {{/page.images.header.sizes}}
+
+        <div class="wrapper">
+            
+            <div id="main-content" id="main" class="group">
+                {{#site.is_protected}}
+                    <h1 id="page-title">Enter password</h1>
+                    <section class="content-editor password">
+                        <form action="" method="post">
+                            <div id="description">
+                                <h3>
+                                    <input type="password" id="password" name="password" />
+                                    <input type="submit" value="Submit" id="submit" />
+                                </h3>
+                                <p>Please enter the password to view this page.</p>
+                            </div>
+                        </form>
+                    </section>
+                {{/site.is_protected}}
+
+                {{#page.is_protected}}
+                    <h1 id="page-title">Enter password</h1>
+                    <section class="content-editor password">
+                        <form action="" method="post">
+                            <div id="description">
+                                <h3>
+                                    <input type="password" id="password" name="password" />
+                                    <input type="submit" value="Submit" id="submit" />
+                                </h3>
+                                <p>Please enter the password to view this page.</p>
+                            </div>
+                        </form>
+                    </section>
+                {{/page.is_protected}}
+                            
+                {{#page.not_found}}
+                    <h1 id="page-title">Oops, there was an error.</h1>
+                    <section class="content-editor small-content">
+                        <p>The page you're looking for can't be found. Double-check your URL, or just go <a href="{{site.url}}" title="home">home</a>.</p>
+                    </section>
+                {{/page.not_found}}
+				
+				{{#menu}}
+                    <!-- PAGE TYPE: Menu -->
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+  
+			        <div class="menu {{format}}">
+                        {{#page.has_content}}
+                        <section class="content-editor">
+                            {{{body}}}
+                        </section>
+                        {{/page.has_content}}
+
+                        {{#show_navigation}}
+                            <ul class="section-titles">
+                                {{#items}}
+                                {{#section}}
+                                <li>
+                                    <a href="#{{slug}}" title="{{title}}">{{title}}</a>
+                                </li>
+                                {{/section}}
+                                {{/items}}
+                            </ul>
+                        {{/show_navigation}}
+                            
+                        <ul class="menu-list group">
+                        {{#items}}
+                            <li class="menu-item{{#section}} has-sub-items{{/section}}">
+
+                                {{^section}}
+                                    {{#title}}<h2 class="item-title">{{title}}</h2>{{/title}}
+                                    {{#price}}<p class="price">{{price}}</p>{{/price}}
+                                    {{#description}}<div class="description content-editor">{{{description}}}</div>{{/description}}
+                                {{/section}}
+
+                                {{#section}}
+                                    <h2 class="section-title"><a name="{{slug}}"></a>{{title}}</h2>
+                                    <ul class="sub-items group">
+                                        {{#items}}
+                                            <li class="menu-item">
+                                                {{#title}}<h2 class="item-title">{{title}}</h2>{{/title}}
+                                                {{#price}}<p class="price">{{price}}</p>{{/price}}
+                                                {{#description}}<div class="description content-editor">{{{description}}}</div>{{/description}}
+                                            </li>
+                                        {{/items}}
+                                    </ul>
+                                {{/section}}
+                                
+                            </li>
+                        {{/items}}
+                        </ul>
+
+                    </div>
+                    <div class="sharing">
+                        {{{sharing}}}
+                    </div>
+                {{/menu}}
+
+                {{#custom}}
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+					{{#page.has_content}}
+                    <section class="content-editor">
+                        {{{body}}}
+                    </section>
+					{{/page.has_content}}
+                    <div class="sharing">
+                	{{{sharing}}}
+                	</div>
+                {{/custom}}
+				
+                {{#about}}
+                <!-- PAGE TYPE: About -->
+                <section id="about">
+					
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+                    
+                    <section class="content-editor">
+	                    {{#media}}
+	                        {{#image}}
+	                            <img class="{{format}}" alt="{{page.title}}" src="{{responsive.url}}" />
+	                        {{/image}}
+	                    {{/media}}
+                        {{{body}}}
+                    </section>
+    
+                </section>
+                <div class="sharing">
+                    {{{sharing}}}
+                </div>
+                {{/about}}
+				
+                {{#contact}}
+                <!-- PAGE TYPE: Contact -->
+                
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+                    
+                    <section class="contact content-editor">
+
+                        <div class="map-content-container">
+                            {{#map}}
+                            <div class="map-container">
+                                {{{map}}}
+                            </div>
+                            {{/map}} 
+
+                            {{#page.has_content}}
+                            <div class="content">
+                                {{{body}}}
+                            </div>
+                            {{/page.has_content}}
+                            <div class="sharing">
+                                {{{sharing}}}
+                            </div> 
+                        </div>
+
+                        <ul class="contact-info">
+                            {{#items}}
+                            <li class="contact-item {{type}}">{{#type_title}}<span class="type">{{type_title}} </span>{{/type_title}}<span class="value">{{{formatted}}}</span></li>
+                            {{/items}}
+                        </ul>
+                        
+                        {{#address}}
+                            <address>{{{address}}}</address>
+                        {{/address}}
+
+                    </section>                   
+                {{/contact}}
+                
+                
+                {{#tumblr}}
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+                    <section id="blog" class="{{view}} tumblr">
+                        <ul>
+                            {{#posts}}
+                            <li class="group">
+                                <article class="{{type}} group">
+                                
+                                    {{#text}}
+                                    <header>
+                                        <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{date => date.YMD}}</time>
+                                    </header>
+                                    <div class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </div>
+                                    {{/text}}
+                                    
+                                    {{#photo}}
+                                    <header>
+                                        {{#photos}}
+                                        <img src="{{resize_500.url}}" alt="{{alt}}" />
+                                        {{/photos}}
+                                         <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{date => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </section>
+                                    {{/photo}}
+                                    
+                                    {{#quote}}
+                                    <section class="blogs-content">
+                                        <blockquote cite="{{cite}}">
+                                            <p>{{{body}}}</p>
+											{{#source}}
+                                            <footer>
+                                                — <span>{{{source}}}</span>
+                                            </footer>
+											{{/source}}
+                                        </blockquote>
+                                    </section>
+                                    {{/quote}}
+                                    
+                                    {{#link}}
+                                    <header>
+                                        <h1><a href="{{url}}" title="{{title}}">{{title}}{{^title}}{{url}}{{/title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{date => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </section>
+                                    {{/link}}
+                                    
+                                    {{#audio}}
+                                    <header>
+                                         <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{date => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        {{{player.embed_code}}}
+                                        {{{body}}}
+                                    </section>
+                                    {{/audio}}
+
+                                    {{#video}}
+                                    <header>
+                                         <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{date => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        <div class="video">
+                                            {{{player.resize_500.embed_code}}}
+                                        </div>
+										{{{body}}}
+                                    </section>
+                                    {{/video}}
+
+                                    {{#chat}}
+                                    <header>
+                                        <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        <ul>
+                                            {{#dialogue}}
+                                            <li>
+                                                <span class="name">{{{name}}}</span>
+                                                <span class="phrase">{{{phrase}}}</span>
+                                            </li>
+                                            {{/dialogue}}
+                                        </ul>
+                                    </section>
+                                    {{/chat}}
+                                    
+                                    <div class="tumblr-sharing">
+                                        <a href="{{permalink}}#notes" class="comments" data-icon="☁">{{note_count}} comments</a>
+                                        <a href="http://www.tumblr.com/reblog/{{id}}/{{reblog_key}}" class="reblog" target="_blank" data-icon="⟲">Reblog</a>
+                                        <div class="sharing">{{{sharing}}}</div>
+                                    </div>
+                                </article>
+                            </li>
+                            {{/posts}}
+                        </ul>
+
+                        {{#paging}}
+                            <div class="blog-paging">
+                                {{#older}}
+                                <a class="older" href="{{url}}" title="See older posts">← Older</a>
+                                {{/older}}
+                                {{#newer}}
+                                <a class="newer" href="{{url}}" title="See newer posts">Newer→ </a>
+                                {{/newer}}
+                            </div>
+                        {{/paging}}
+                    </section>
+                {{/tumblr}}
+                
+                {{#blog}}
+                    <section id="blog" class="{{view}}">
+                        <div class="titles">
+                            <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}><a href="{{page.url}}" title="Back to blog listing">{{page.title}}</a></h1>
+                            {{#has_categories}}
+							<div class="category-dropdown">
+                                <div class="select-box" data-icon="∨">
+                                    {{^category}}<span class="label">Category</span>{{/category}}
+                                    {{#category}}<span class="category">{{category}}</span>{{/category}}
+                                </div>
+                                <select id="select-category">
+                                    <option></option>
+                                    {{#categories}}
+                                    <option>{{.}}</option>
+                                    {{/categories}}
+                                </select>
+                            </div>
+							{{/has_categories}}
+                            {{#subscribe}}<a class="subscribe" data-icon="R" href="{{page.url}}?rss">Subscribe</a>{{/subscribe}}
+                        </div>
+                        <div id="filter">
+                            <nav>
+                                <p class="blog-crumbs">
+                                    {{#post_view}}
+                                    <a href="{{page.url}}" class="back">← Back to all posts</a>
+                                    {{/post_view}}
+                                    {{#tag}}
+                                    <span class="tag-filtered">Currently showing posts tagged <em>{{tag}}</em></span>
+                                    {{/tag}}
+                                </p>
+                            </nav>
+                        </div>
+                        
+                        <!--LISTING-->
+                        
+                        <ul>
+                            {{#posts}}
+                            <li>
+                                <article class="{{type}} group">
+                                
+                                    {{#text}}
+                                    <header>
+                                        <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{created => date.YMD}}</time>
+                                    </header>
+                                    <div class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </div>
+                                    {{/text}}
+                                    
+                                    {{#image}}
+                                    <header>
+                                        {{#images}}
+                                        <img src="{{images.resize_800.url}}" alt="{{alt}}" />
+                                        {{/images}}
+                                        <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{created => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </section>
+                                    {{/image}}
+                                    
+                                    {{#quote}}
+                                    <section class="blogs-content">
+                                        <blockquote cite="{{cite}}">
+                                            <p>{{{body}}}</p>
+											{{#source}}
+                                            <footer>
+                                                — <span>{{{source}}}</span>
+                                            </footer>
+											{{/source}}
+                                        </blockquote>
+                                    </section>
+                                    {{/quote}}
+                                    
+                                    {{#link}}
+                                    <header>
+                                        <h1><a href="{{url}}" title="{{title}}" {{#target}}target="{{target}}"{{/target}}>{{title}}</a></h1>
+                                        <time pubdate="pubdate" data-icon="☉">{{created => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </section>
+                                    {{/link}}
+                                    
+                                    {{#audio}}
+                                    <header>
+                                        <time pubdate="pubdate" data-icon="☉">{{created => date.YMD}}</time>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        <article class="audio-player">
+                                            <ol>
+                                                <li data-id="{{id}}" data-uid="{{uid}}">
+                                                    <img class="album-image" src="{{image_url}}" alt="{{title}}" />
+                                                    <div class="controls">
+                                                        <a href="#" class="play-pause" title="play/pause" data-icon="▶" data-icon-pause="ⅱ">Play/Pause</a>
+                                                    </div>
+                                                    <div class="song-info">
+                                                        <h2>{{title}}</h2>
+                                                        <h3>{{album_title}}</h3>
+                                                        <span class="time">0:00</span>
+                                                        <span class="length">
+                                                            <span class="load" style="width: 0%;"></span>
+                                                            <span class="progress" style="width: 0%;"></span>
+                                                        </span>
+                                                        <audio preload="auto">
+                                                            <source src="{{mp3_url}}" type="audio/mpeg" ></source>
+                                                        </audio>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </article>
+                                        {{{body}}}
+                                    </section>
+                                    {{/audio}}
+                                    
+                                    {{#video}}
+                                    <header>
+                                    	<div class="video">
+                                           {{{embed}}}
+                                        </div>
+                                         <h1><a href="{{url}}" title="{{title}}">{{title}}</a></h1>
+                                    </header>
+                                    <section class="blogs-content content-editor">
+                                        {{{body}}}
+                                    </section>
+                                    {{/video}}
+                                    
+                                    <footer>
+                                        {{^post_view}}{{#comments_on}}<a href="{{url}}#comments" class="comments" data-icon="☁">Comments</a>{{/comments_on}}{{/post_view}}
+                                        {{#has_tags_or_categories}}
+                                        <div class="tags-categories">
+                                            {{#has_tags}}
+                                            <h3>Tags</h3>
+                                            <ul class="tags">
+                                            {{#tags}}
+                                                <li><a href="{{page.url}}/tag/{{.}}" title="{{.}}">{{.}}</a></li>
+                                            {{/tags}}
+                                            </ul>
+                                            {{/has_tags}}
+    
+                                            {{#has_categories}}
+                                            <h3>Categories</h3>
+                                            <ul class="categories">
+                                            {{#categories}}
+                                                <li><a href="{{page.url}}/category/{{title}}" title="title">{{title}}</a></li>
+                                            {{/categories}}
+                                            </ul>
+                                            {{/has_categories}}
+                                        </div>
+                                        {{/has_tags_or_categories}}
+		                                <div class="sharing">
+		                                {{{sharing}}}
+		                                </div>
+                                    </footer>
+                                </article>
+                                
+                                {{#post_view}}
+                                {{{comments}}}
+                                {{/post_view}}
+                                
+                            </li>
+                            {{/posts}}
+                        </ul>
+
+                        {{#paging}}
+                            <div class="blog-paging">
+                                {{#older}}
+                                <a class="older" href="{{url}}" title="See older posts">← Older</a>
+                                {{/older}}
+                                {{#newer}}
+                                <a class="newer" href="{{url}}" title="See newer posts">Newer→ </a>
+                                {{/newer}}
+                            </div>
+                        {{/paging}}
+                    </section>
+                {{/blog}}
+                
+                {{#gallery}}
+					<h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+                    <section class="{{format}}-gallery {{#slideshow_thumbnails}}{{thumb_layout}}-layout{{/slideshow_thumbnails}} {{#default_to_slideshow}}show{{/default_to_slideshow}}">
+                      
+                      {{#vertical}}
+                            <ul class="large-gallery">
+                                {{#items}}
+                                <li data-id="{{id}}" data-type="{{type}}" class="count_1 {{orientation}}">
+                                    {{#url}}<a href="{{url}}" title="{{title}}">{{/url}}
+                                        {{#video}}
+                                          <div class="video {{ratio}}">
+                                            {{{embed}}}
+                                          </div>
+                                          {{/video}}
+                                        {{#photo}}
+                                          {{#on_virb}}
+                                          <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_1600.url}}" alt="{{alt}}" />
+                                          {{/on_virb}}
+    
+                                          {{#on_instagram}}
+                                          <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_612.url}}" alt="{{alt}}" />
+                                          {{/on_instagram}}
+                                          
+                                          {{#on_flickr}}
+                                          <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_original.url}}" alt="{{alt}}" />
+                                          {{/on_flickr}}
+                                        {{/photo}}
+										{{#has_details}}
+                                        <div class="details{{#on_instagram}} instagram{{/on_instagram}}">
+                                            {{#title}}<h2>{{title}}</h2>{{/title}}
+                                            {{#body}}<p>{{{body}}}</p>{{/body}}
+                                        </div>
+										{{/has_details}}
+                                    {{#url}}</a>{{/url}}
+                                </li>
+                                {{/items}}
+                            </ul>
+                        {{/vertical}}
+                      
+                      {{#horizontal}}
+                          <div class="horizontal-gallery-container">
+                              <ul class="large-gallery">
+                                  {{#items}}
+                                  <li data-id="{{id}}" data-type="{{type}}" class="count_{{count}} {{orientation}}">
+                                      <div class="media-container">
+                                          {{#url}}<a href="{{url}}" title="{{title}}">{{/url}}
+                                              {{#video}}
+											  <div class="video {{ratio}}">
+                                              	{{{embed}}}
+											  </div>
+                                              {{/video}}
+                                              {{#photo}}
+                                                  {{#on_virb}}
+                                                  <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_1600.url}}" alt="{{alt}}" />
+                                                  {{/on_virb}}
+    
+                                                  {{#on_instagram}}
+                                                  <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_612.url}}" alt="{{alt}}" />
+                                                  {{/on_instagram}}
+
+                                                  {{#on_flickr}}
+                                                  <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_original.url}}" alt="{{alt}}" />
+                                        		  {{/on_flickr}}
+                                              {{/photo}}
+											  {{#has_details}}
+                                              <div class="details{{#on_instagram}} instagram{{/on_instagram}}">
+		                                          {{#title}}<h2>{{title}}</h2>{{/title}}
+		                                          {{#body}}<p>{{{body}}}</p>{{/body}}
+                                              </div>
+											  {{/has_details}}
+                                          {{#url}}</a>{{/url}}
+                                      </div>
+                                  </li>
+                                  {{/items}}
+                              </ul>
+                          </div>
+                      {{/horizontal}}
+                      
+                      {{#slideshow}}
+                          <div class="large-gallery">
+
+                              <div class="navigation {{#autoplay}}hide{{/autoplay}}">
+                                  <a class="previous" href="#" title="previous" data-icon="＜">
+									  <span class="count"><span class="current">0</span><span class="divider">/</span><span class="total">{{total_count}}</span></span>
+								  </a>
+                                  <a class="next" href="#" title="next" data-icon="＞">
+									  <span class="count"><span class="current">0</span><span class="divider">/</span><span class="total">{{total_count}}</span></span>
+								  </a>
+                              </div>
+                              
+                              <ul>
+                                  {{#items}}
+                                  <li data-id="{{id}}" data-type="{{type}}" class="count_{{count}} {{orientation}}" {{#first}}style="display: block;"{{/first}}>
+                                          {{#video}}
+                                          <div class="video {{ratio}}">
+                                            {{{embed}}}
+                                          </div>
+                                          {{/video}}
+                                          {{#photo}}
+                                              {{#on_virb}}
+                                              <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_1600.url}}" alt="{{alt}}" />
+                                              {{/on_virb}}
+    
+                                              {{#on_instagram}}
+                                              <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_612.url}}" alt="{{alt}}" />
+                                              {{/on_instagram}}
+                                              {{#on_flickr}}
+                                              <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_original.url}}" alt="{{alt}}" />
+                                        	  {{/on_flickr}}
+                                            {{/photo}}
+										  {{#has_details}}
+                                          <div class="details{{#on_instagram}} instagram{{/on_instagram}}">
+                                              {{#title}}
+                                                  <h2>
+                                                      {{#url}}<a href="{{url}}" title="{{title}}">{{/url}}
+                                                          {{title}}
+                                                      {{#url}}</a>{{/url}}
+                                                  </h2>
+                                              {{/title}}
+
+	                                          {{#body}}<p>{{{body}}}</p>{{/body}}
+                                          </div>
+										  {{/has_details}}
+                                  </li>
+                                  {{/items}}
+                              </ul>
+                              <a href="#" class="back-to-slideshow" title="Back to Thumbnails">← Back to Thumbnails</a>
+                          </div>
+                      {{/slideshow}}
+
+                      {{#grid}}
+                          <ul class="large-gallery">
+                              {{#items}}
+                              <li class="count_{{count}} {{orientation}}" data-id="{{id}}" data-type="{{type}}">
+                                  {{#url}}<a href="{{url}}" title="{{title}}">{{/url}}
+                                      
+                                      {{#photo}}
+                                        {{#on_dribbble}}
+                                        <img src="{{spacer}}" data-src="{{images.responsive.url}}" data-width="{{images.responsive.width}}" data-height="{{images.responsive.height}}" data-full-src="{{images.responsive_400.url}}" alt="{{alt}}"/>
+                                        {{/on_dribbble}}
+                                      {{/photo}}
+
+                                      {{#has_details}}
+                                      <div class="details">
+                                          {{#show_info}}
+                                          {{#title}}<h2>{{title}}</h2>{{/title}}
+                                          {{#body}}<p>{{{body}}}</p>{{/body}}
+                                          {{/show_info}}
+                                          {{#meta}}
+                                          <div class="meta">
+                                              {{#likes}}<p data-icon="♥">{{{likes}}}</p>{{/likes}}
+                                              {{#views}}<p data-icon="I">{{{views}}}</p>{{/views}}
+                                              {{#comments}}<p data-icon="☁">{{{comments}}}</p>{{/comments}}
+                                              <a href="{{url}}" data-icon="⍈">View</a>
+                                          </div>
+                                          {{/meta}}
+                                      </div>
+                                      {{/has_details}}
+                                  {{#url}}</a>{{/url}}
+                              </li>
+                              {{/items}}
+                          </ul>
+                      {{/grid}}
+
+                      <ul class="thumbnails group">
+                           {{#items}}
+                            <li>
+                             <a href="{{url}}" data-type="{{type}}" data-source="{{source}}" title="{{title}}">
+                                 {{#on_virb}}
+                                   {{#video}}
+                                   <img src="{{spacer}}" data-src="{{images.resize_240.url}}" data-width="{{images.resize_240.width}}" data-height="{{images.resize_240.height}}" alt="{{alt}}" />
+                                   {{/video}}
+                                   {{#photo}}
+                                   <img src="{{spacer}}" data-src="{{images.responsive_500.url}}" data-width="{{images.responsive_500.width}}" data-height="{{images.responsive_500.height}}" alt="{{alt}}" class="vertical-thumb" />
+                                   <img src="{{spacer}}" data-src="{{images.crop_280x280.url}}" data-width="{{images.crop_280x280.width}}" data-height="{{images.crop_280x280.height}}" alt="{{alt}}" class="square-thumb" />
+                                   {{/photo}}
+                                 {{/on_virb}}
+
+                                 {{#on_instagram}}
+                                 <img src="{{spacer}}" data-src="{{images.responsive_612.url}}" data-width="{{images.responsive_612.width}}" data-height="{{images.responsive_612.height}}" alt="{{alt}}" />
+                                 {{/on_instagram}}
+
+                                 {{#on_flickr}}
+                                 <img src="{{spacer}}" data-src="{{images.responsive_500.url}}" data-width="{{images.responsive_500.width}}" data-height="{{images.responsive_500.height}}" alt="{{alt}}" />
+                                 {{/on_flickr}}
+
+                                 {{#on_vimeo}}
+                                 <img src="{{spacer}}" data-src="{{images.responsive_500.url}}" data-width="{{images.responsive_500.width}}" data-height="{{images.responsive_500.height}}" alt="{{alt}}" />
+                                 {{/on_vimeo}}
+
+                                 {{#on_youtube}}
+                                 <img src="{{spacer}}" data-src="{{images.responsive_500.url}}" data-width="{{images.responsive_500.width}}" data-height="{{images.responsive_500.height}}" alt="{{alt}}" />
+                                 {{/on_youtube}}
+                              </a>
+                            </li>
+                            {{/items}}
+                        </ul>
+                      
+                    </section>
+
+                    {{#page.has_content}}
+                    <section class="content-editor">
+                        {{{body}}}
+                    </section>
+					{{/page.has_content}}
+                    <div class="sharing">
+                    {{{sharing}}}
+                    </div>
+                {{/gallery}}
+                
+                {{#audio}}
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+                    <section class="audio group">
+                        {{#soundcloud}}
+                            {{{embed}}}
+                        {{/soundcloud}}
+                        {{^soundcloud}}
+
+                        {{#images}}
+                        <div class="album-art">
+                        	<img src="{{images.crop_300x300.url}}" alt="{{page.title}}" />
+                        </div>
+                        {{/images}}
+                        
+                        <article class="audio-player {{^images}}no-art{{/images}}">
+                            <ol>
+                            {{#songs}}
+                                <li data-title="{{title}}" data-id="{{id}}" data-uid="{{uid}}" data-source="{{source}}">
+                                    <img class="album-image" src="{{image_url}}" alt="{{page.title}}" />
+                                    <div class="controls">
+                                        <a href="#" class="play-pause" title="play/pause" data-icon="▶" data-icon-pause="ⅱ">Play/Pause</a>
+                                    </div>
+                                    <div class="song-info">
+                                        <h2>{{title}}</h2>
+                                        <span class="time">0:00</span>
+										{{#downloadable}}<a class="download" href="{{download_url}}" title="download track">Download</a>{{/downloadable}}
+                                        <span class="length">
+                                            <span class="load" style="width: 0%;"></span>
+                                            <span class="progress" style="width: 0%;"></span>
+                                        </span>
+                                        <audio preload="none">
+                                          <source src="{{mp3_url}}" type="audio/mpeg" ></source>
+                                          <source src="{{ogg_url}}" type="audio/ogg" ></source>
+                                        </audio>
+                                    </div>
+                                </li>
+                            {{/songs}}
+                            </ol>
+                        </article>
+                        {{/soundcloud}}
+                    </section>
+                    {{#page.has_content}}
+                    <section class="content-editor">
+                        {{{body}}}
+                    </section>
+					{{/page.has_content}}
+                {{/audio}}
+
+                {{#index}}
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+					{{#page.has_content}}
+                    <section class="content-editor">
+                        {{{body}}}
+                    </section>
+					{{/page.has_content}}
+                    <section class="index">
+                        <ul class="{{thumb_size}} {{thumb_scale}}">
+                            {{#pages}}
+                            <li class="count_{{count}} {{title}}{{^has_image}} no-image{{/has_image}}">
+                                <a href="{{site.url}}{{url}}" title="{{title}}" {{#target}}target="{{target}}"{{/target}}>
+                                    {{#has_image}}<img src="{{image_url}}" alt="{{title}}">{{/has_image}}
+    
+                                    <div class="titles">
+                                        <h2>{{title}}</h2>
+                                        <h3>{{{sub_title}}}</h3>
+                                    </div>
+                                </a>
+                            </li>
+                            {{/pages}}
+                        </ul>
+                    </section>
+                    <div class="sharing">
+                    {{{sharing}}}
+                    </div>
+                {{/index}}
+                
+                {{#events}}
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+					{{#page.has_content}}
+                    <section class="content-editor">
+                        {{{body}}}
+                    </section>
+					{{/page.has_content}}
+                    <section class="events">
+                        <ul>
+                            {{#items}}
+                            <li>
+                            	<h2 class="title">{{title}}</h2>
+                                <div class="date">
+                                    <span class="month">{{start_time => date.month_name}}</span>
+                                    <span class="day">{{start_time => date.day}},</span>
+                                    <span class="year">{{start_time => date.year}}</span>
+                                </div>
+                                <div class="info">
+                                    {{#location.title}}
+                                    <span class="address" data-icon="⚑">{{location.title}}</span>
+                                    {{/location.title}}
+
+                                    {{^all_day}}
+                                    <span class="timeframe" data-icon="☉">{{start_time => date.time}}{{#end_time}} - {{end_time => date.time}}{{/end_time}}</span>
+                                    {{/all_day}}
+
+                                    {{#permalink}}
+                                    <a class="see-details" title="{{title}}" href="{{permalink}}">See Details</a>
+                                    {{/permalink}}
+                                </div>
+                            </li>
+                            {{/items}}
+                        </ul>
+                    </section>
+                    <div class="sharing">
+                    {{{sharing}}}
+                    </div>
+                {{/events}}
+                
+                {{#store}}
+                    
+					{{#listing}}
+					<h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{{page.title}}}</h1>
+
+					<section id="store-listing" class="index group{{#store.on_etsy}} etsy{{/store.on_etsy}}">
+					    
+                        {{#has_categories}}
+                        <ul class="categories">
+                            {{#categories}}
+                            <li {{#selected}}class="selected"{{/selected}}>
+                                <a href="?category={{slug}}" title="{{title}}">{{{title}}}</a>
+                            </li>
+                            {{/categories}}
+                        </ul>
+                        {{/has_categories}}
+                        
+                        <ul class="{{thumb_scale}}">
+					        {{#products}}
+					        <li class="">
+					            <a href="{{page.url}}/{{id}}" title="{{{title}}}">
+					                <img src="{{main_image.crop_340x270}}" alt="{{{title}}}">
+					                {{#coming_soon}}
+									<div class="titles coming-soon">
+					                    <h2>{{{title}}}</h2>
+					                    <span class="price">Coming Soon</span>
+					                </div>
+                                    {{/coming_soon}}
+					                {{#sold_out}}
+									<div class="titles sold-out">
+					                    <h2>{{{title}}}</h2>
+					                    <span class="price">Sold Out</span>
+					                </div>
+                                    {{/sold_out}}
+                                    {{^sold_out}}
+                                    {{^coming_soon}}
+									<div class="titles">
+					                    <h2>{{{title}}}</h2>
+					                    <span class="price">{{currency.sign}}{{price}}</span>
+					                </div>
+                                    {{/coming_soon}}
+                                    {{/sold_out}}
+					            </a>
+					        </li>
+					        {{/products}}
+					    </ul>
+					    {{#pagination}}{{{pagination}}}{{/pagination}}
+					</section>
+					
+					{{#page.has_content}}
+                    <section class="content-editor">
+                        {{{body}}}
+                    </section>
+                    {{/page.has_content}}
+					<div class="sharing">
+					{{{sharing}}}
+					</div>
+					{{/listing}}
+                   	
+					{{#product_detail}} 
+                    <section id="store-detail" class="group{{#store.on_etsy}} etsy{{/store.on_etsy}}">
+                                            
+                        <div class="product-specifics group">
+                            <a title="Back to Product Listing" href="{{store.url}}" class="back-to-listing">Back to Product Listing</a>
+                            
+                            <h1>{{{product.title}}}</h1>
+                                        
+                            {{#product.coming_soon}}
+                            <div class="price coming-soon">Coming Soon</div>
+                            {{/product.coming_soon}}
+                            {{#product.sold_out}}
+                            <div class="price sold-out">Sold Out</div>
+                            {{/product.sold_out}}
+                            {{^product.sold_out}}
+                            {{^product.coming_soon}}
+                            <div class="price">{{currency.sign}}<span id="price">{{product.price}}</span></div>
+
+                            {{#product.has_variations}}
+                                {{#product.variations}}
+    							<div class="options{{#has_single_option}} single{{/has_single_option}}">
+                                <select id="product-options">
+                                    {{#options}}
+                                    <option data-price="{{price}}" value="{{value}}" {{#sold_out}}disabled="disabled"{{/sold_out}}>{{name}}  {{#sold_out}}(sold out){{/sold_out}}</option>
+                                    {{/options}}
+                                </select>
+    							</div>
+                                {{/product.variations}}
+                            {{/product.has_variations}}
+
+                            <input class="add-to-cart" type="submit" 
+                                data-title="{{product.title}}" 
+                                data-id="{{product.id}}" 
+                                data-price="{{product.price}}" 
+                                data-thumb="{{product.main_image.crop_75x75}}" 
+                                data-currency="{{currency.code}}" value="Add To Cart">
+							{{/product.coming_soon}}
+                            {{/product.sold_out}}
+                        </div>
+                                            
+                        <div class="main-image-container">
+                            <a href="#"><img alt="{{product.title}}" src="{{product.main_image.resize_570}}" class="main-image"></a>
+                            
+                            <ul class="thumbnails">
+                                {{#product.images}}
+                                <li><a href="#"><img src="{{crop_170x135}}" data-src="{{resize_570}}"></a></li>
+                                {{/product.images}}
+                            </ul>
+                        </div>   
+                        
+                        <div class="product-description">
+                            {{{product.body}}}
+                        </div>
+                    </section>  
+                    
+                    <div class="sharing">
+                    {{{sharing}}}
+                    </div>
+					{{/product_detail}} 
+
+					{{#cart}} 
+                    <section id="store-cart" class="group{{#store.on_etsy}} etsy{{/store.on_etsy}}">
+                        <h1 id="page-title">Your Cart</h1>
+                        
+                        <a title="Back to Product Listing" href="{{store.url}}" class="back-to-listing">Back to Product Listing</a>
+                        
+                        <ul id="items-in-cart" class="items-in-cart">
+                        </ul>
+                        
+                        <div id="cart-empty-message" class="empty-notice">
+                            <p>Your cart is currently empty! Why don't you <a href="{{store.url}}">start shopping?</a></p>
+                        </div>
+                        
+                        <div class="total">  
+                            <p class="label">Subtotal</p>
+                            <div class="price" id="cart-total"><span class="amount">{{currency.sign}}0</span> <span class="currency">{{currency.code}}</span></div>
+                        </div>
+                        
+                        <div class="cart-actions">
+                            <a title="Continue Shopping" class="continue-shopping" href="{{store.url}}">Continue Shopping</a>
+                            <a title="Proceed to Checkout" class="checkout" href="#">Proceed to Checkout</a>
+                        </div>
+                    </section> 
+					{{/cart}} 
+
+                {{/store}}
+				
+                {{#listing}}
+                <!-- PAGE TYPE: Listing -->
+                    <h1 id="page-title" {{#page.hide_title}}style="display:none;"{{/page.hide_title}}>{{page.title}}</h1>
+                    
+                    <div class="listing content-editor {{format}}">
+                        {{#page.has_content}}
+                        <section class="content-editor">
+                            {{{body}}}
+                        </section>
+                        {{/page.has_content}}
+                        
+                        <ul class="listing-list">
+                        {{#items}}
+                            <li>
+                            {{#media}}
+                                <span class="image">{{{media}}}</span>
+                                <span class="info">
+                                {{#title}}<h2 class="listing-title">{{title}}</h2>{{/title}}
+                                {{#description}}<div class="description">{{{description}}}</div>{{/description}}
+                                </span>
+                            {{/media}}
+
+                            {{^media}}
+                                {{#title}}<h2 class="listing-title">{{title}}</h2>{{/title}}
+                                {{#description}}<div class="description">{{{description}}}</div>{{/description}}
+                            {{/media}}
+                            </li>
+                        {{/items}}
+                        </ul>
+                    </div>
+                    
+                    <div class="sharing">
+                    {{{sharing}}}
+                    </div>
+                {{/listing}}
+                
+                                
+            </div>
+        
+        </div> <!-- end wrapper -->
+    </div> <!-- end container -->
+         
+	{{#page.has_widgets}}
+    {{^page.is_protected}}   
+    <section class="widgets">
+        <div class="wrapper">
+            
+            {{#page.widgets}}
+            <article class="widget {{type}}">
+                <h2 class="widget-title" {{#hide_title}}style="display:none;"{{/hide_title}}>{{{title}}}</h2>
+                {{{body}}}
+            </article>
+            {{/page.widgets}}
+            
+        </div>    
+    </section>
+    {{/page.is_protected}}
+    {{/page.has_widgets}}     
+        
+    {{#site.footer}}    
+    <footer id="site-footer">
+        <div class="wrapper">
+            {{{site.footer}}}
+        </div>
+    </footer>
+    {{/site.footer}}
+
+
+	<!-- JS
+    ================================================== -->
+    {{{site.scripts.body}}}
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

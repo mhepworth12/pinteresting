@@ -1,0 +1,544 @@
+/* Reset (credit: http://meyerweb.com/eric/tools/css/reset/)
+================================================== */
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline; }
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block; }
+	body {
+		line-height: 1; }
+	ol, ul {
+		list-style: none; }
+	blockquote, q {
+		quotes: none; }
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none; }
+	table {
+		border-collapse: collapse;
+		border-spacing: 0; }
+
+{{{virb.fonts.themes}}}
+
+{{{customize.fonts.font_face}}}
+
+body {
+{{#customize.images.background.url}}
+    background-image: url({{{customize.images.background.url}}});
+{{/customize.images.background.url}}
+    
+{{#customize.images.background.tile}}
+    /* Tile */
+    background-position: top left;
+    background-repeat: repeat;
+{{/customize.images.background.tile}}
+
+{{#customize.images.background.repeat-x}}
+    /* Repeat Horizontal */
+    background-position: top left;
+    background-repeat: repeat-x;
+{{/customize.images.background.repeat-x}}
+
+{{#customize.images.background.repeat-y}}
+    /* Repeat Vertical */
+    background-position: top left;
+    background-repeat: repeat-y;
+{{/customize.images.background.repeat-y}}
+
+{{#customize.images.background.fullscreen}}
+    /* Fullscreen */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+{{/customize.images.background.fullscreen}}
+}
+
+
+/***** background_body color *****/
+body,
+nav#main-nav ul li ul,
+.opentable form#OT_form .OT_wrapper ul.OT_list li.OT_submit a.OT_Find_a_Table,
+table.ui-datepicker-calendar td a.ui-state-default.ui-state-active,
+table.ui-datepicker-calendar td a.ui-state-active.ui-state-hover,
+.opentable li.OT_navListItem a.OT_navLink:hover, 
+.opentable li.OT_navListItem a.OT_navLink.selected,
+.opentable li.OT_navListItem a.OT_navLink.selected:hover {
+	background-color: {{{customize.colors.background_body}}};
+}
+
+
+/***** background_content color *****/
+.main-container,
+	background-color: {{{customize.colors.background_content}}};
+}
+.widgets article.audio-player {
+	background-color: {{{customize.colors.background_body}}};
+	background-color: {{{customize.colors.background_content}}};
+}
+
+input#submit,
+#main-content .content-editor pre,
+#main-content .slideshow-gallery .navigation .previous, 
+#main-content .slideshow-gallery .navigation .next, 
+#main-content .slideshow-gallery .navigation p, 
+#main-content .slideshow-thumbnails-gallery .navigation .previous, 
+#main-content .slideshow-thumbnails-gallery .navigation .next, 
+#main-content .slideshow-thumbnails-gallery .navigation p,
+#main-content .masonry-gallery .navigation .previous, 
+#main-content .masonry-gallery .navigation .next, 
+#main-content .masonry-gallery .navigation p,
+#main-content .audio .audio-player li a.download,
+#main-content .topspins .topspin-widget-buy-button a,
+#main-content #store-listing ul.pagination li.current a,
+#main-content #store-detail .product-specifics .add-to-cart,
+#main-content #store-cart .cart-actions .checkout,
+.audio-player ol li .controls .play-pause,
+.opentable form#OT_form .OT_wrapper ul.OT_list li.OT_submit a.OT_Find_a_Table {
+	color: {{{customize.colors.background_body}}};
+	color: {{{customize.colors.background_content}}};
+}
+
+
+
+/***** background_footer color *****/
+.widgets,
+footer#site-footer,
+.store-cart {
+	background-color: {{{customize.colors.background_footer}}};
+}
+
+
+/***** site_name color *****/
+.logo h1 a {
+	color: {{{customize.colors.site_name}}};
+}
+
+
+/***** subtitle color *****/
+.logo h2 {
+	color: {{{customize.colors.subtitle}}};
+}
+
+
+/***** nav primary color *****/
+nav#main-nav ul li.section span,
+nav#main-nav ul li,
+nav#main-nav ul li a,
+nav#main-nav ul li ul li a {
+    color: {{{customize.colors.nav_primary}}};
+}
+
+
+/***** nav secondary color *****/
+nav#main-nav ul li a:hover, 
+nav#main-nav ul li.current a,
+nav#main-nav ul li.section:hover span {
+    color: {{{customize.colors.nav_secondary}}};
+}
+
+
+/***** nav_rollover color *****/
+nav#main-nav ul li a:hover, 
+nav#main-nav ul li.current a {
+	background-color: {{{customize.colors.nav_rollover}}};
+}
+
+nav#main-nav ul li ul li a:hover, 
+nav#main-nav ul li ul li.current a {
+	color: {{{customize.colors.nav_rollover}}};
+}
+
+nav#main-nav ul li ul {
+	border-color: {{{customize.colors.nav_rollover}}};
+}
+
+
+/***** primary text color *****/
+body,
+.cart-link,
+.audio-player .controls .previous, 
+.audio-player .controls .next,
+#blog ul li article > footer a,
+#blog ul li article.quote blockquote footer a,
+#main-content .large-gallery li .details h2,
+#main-content .horizontal-gallery .large-gallery .details p,
+#main-content #store-cart ul li .delete,
+#main-content .horizontal-gallery .large-gallery li .details a,
+#main-content #store-cart .cart-actions .continue-shopping,
+#main-content .listing .listing-list li .description,
+#datepicker .ui-datepicker-calendar, 
+#ui-datepicker-div .ui-datepicker-calendar,
+.ui-datepicker .ui-datepicker-header,
+.ui-datepicker table .ui-state-default, 
+.ui-datepicker table .ui-widget-content .ui-state-default,
+.opentable form#OT_form .OT_wrapper ul.OT_list li input,
+#datepicker td a.ui-state-active, 
+#ui-datepicker-div td a.ui-state-active,
+table.ui-datepicker-calendar td a,
+table.ui-datepicker-calendar td a:hover,
+table.ui-datepicker-calendar td a.ui-state-highlight,
+table.ui-datepicker-calendar td a.ui-state-default,
+table.ui-datepicker-calendar td a.ui-state-hover,
+table.ui-datepicker-calendar td.ui-state-disabled span.ui-state-default,
+table.ui-datepicker-calendar .ui-datepicker-calendar thead tr th,
+ul.OT_list li:after,
+#datepicker .ui-widget-header,
+#ui-datepicker-div .ui-widget-header,
+ul.OT_list li input,
+.ui-datepicker-calendar thead tr th span {
+	color: {{{customize.colors.primary}}};
+}
+
+.horizontal-gallery #handle,
+#main-content .audio .audio-player li a.download:hover,
+.audio-player .length,
+.audio-player ol li .controls .play-pause {
+	background-color: {{{customize.colors.primary}}};
+}
+
+
+/***** secondary text color *****/
+.sharing a,
+#main-content .content-editor p.description,
+#main-content .content-editor cite,
+#blog ul li article header time,
+#blog ul li article footer .tags-categories h3,
+#blog ul li article footer, 
+#blog ul li article footer a,
+#main-content .large-gallery .details p,
+.slideshow-gallery .large-gallery .details p, 
+.slideshow-thumbnails-gallery .large-gallery .details p,
+.masonry-gallery .large-gallery .details p,
+#main-content section.events ul li .date,
+#main-content ul.contact-info li .type,
+#main-content .menu .menu-list li .price,
+#main-content .grid-gallery .large-gallery li .details .meta a {
+	color: {{{customize.colors.secondary}}};
+}
+
+#main-content .content-editor pre,
+.audio-player ol li .length .load {
+	background-color: {{{customize.colors.secondary}}};
+}
+
+/***** tertiary text color *****/
+input#password,
+#blog #filter p .tag-or-category,
+#main-content .index ul li a .titles h2,
+#main-content .index ul li a .titles h3,
+#main-content #store-listing .price,
+#main-content #store-cart .empty-notice,
+footer#site-footer {
+	color: {{{customize.colors.tertiary}}};
+}
+
+input#password {
+	border-color: transparent;
+	border-color: {{{customize.colors.tertiary}}};
+}
+
+
+/***** accent color *****/
+#main-content .large-gallery .details .count,
+.slideshow-gallery .large-gallery .count, 
+.slideshow-thumbnails-gallery .large-gallery .count,
+.masonry-gallery .large-gallery .count,
+h1, h2, h3, h4, h5, h6,
+.audio-player ol li h2, 
+.audio-player ol li h3,
+#blog ul li article header h1,
+#blog ul li article.quote blockquote p,
+#main-content .content-editor blockquote p {
+	color: {{{customize.colors.accent}}};
+}
+
+.audio-player ol li .length .progress,
+#main-content .horizontal-gallery .large-gallery li .details {
+	background-color: {{{customize.colors.accent}}};
+}
+
+
+/***** titles text color *****/
+#page-title,
+#blog .titles h1#page-title a,
+#main-content .topspins h1,
+#main-content #store-detail .product-specifics h1,
+#main-content ul.contact-info li.name .value {
+	color: {{{customize.colors.titles}}};
+}
+
+
+/***** widgets primary color *****/
+.widgets article.widget p {
+	color: {{{customize.colors.widgets_primary}}};
+}
+
+
+/***** widgets links color *****/
+.widgets article.widget a {
+	color: {{{customize.colors.widgets_links}}};
+}
+
+
+/***** widgets muted color *****/
+.widgets article.widget .date, 
+.widgets article.widget .date a {
+	color: {{{customize.colors.widgets_muted}}};
+}
+
+
+/***** widgets titles color *****/
+.widgets article.widget h2, 
+.widgets article.widget h2 a {
+	color: {{{customize.colors.widgets_titles}}};
+}
+
+
+/***** container background color *****/
+.horizontal-gallery #slider,
+#main-content .slideshow-gallery .navigation .previous, 
+#main-content .slideshow-gallery .navigation .next, 
+#main-content .slideshow-thumbnails-gallery .navigation .previous, 
+#main-content .slideshow-thumbnails-gallery .navigation .next,
+#main-content .masonry-gallery .navigation .previous, 
+#main-content .masonry-gallery .navigation .next,
+#main-content .audio .audio-player li,
+#main-content section.events ul li,
+#main-content .topspins li,
+#main-content #store-cart .empty-notice,
+#main-content #store-cart ul li,
+#main-content #store-detail .product-specifics .options,
+#datepicker .ui-datepicker-calendar, 
+#ui-datepicker-div .ui-datepicker-calendar,
+.ui-datepicker .ui-datepicker-header,
+.ui-datepicker table .ui-state-default, 
+.ui-datepicker table .ui-widget-content .ui-state-default {
+	background-color: {{{customize.colors.container_background}}};
+}
+
+
+/***** link color *****/
+a,
+#blog ul li article.link h1 a,
+#blog ul li article .blogs-content ul li .name,
+footer#site-footer a,
+.cart-link:hover,
+#store-listing .categories li.selected a,
+.menu .section-titles li a:hover,
+#main-content .grid-gallery .large-gallery li .details .meta a:hover {
+	color: {{{customize.colors.link}}};
+}
+
+input#submit,
+#main-content .audio .audio-player li a.download,
+#main-content .topspins .topspin-widget-buy-button,
+#main-content #store-listing ul.pagination li.current a,
+#main-content #store-detail .product-specifics .add-to-cart,
+#main-content #store-cart .cart-actions .checkout,
+#datepicker td a.ui-state-active, 
+#ui-datepicker-div td a.ui-state-active,
+.opentable form#OT_form .OT_wrapper ul.OT_list li.OT_submit a.OT_Find_a_Table {
+	background-color: {{{customize.colors.link}}};
+}
+
+table.ui-datepicker-calendar td a:hover,
+table.ui-datepicker-calendar td a.ui-state-active {
+	outline-color: {{{customize.colors.link}}};
+}
+
+/***** link_rollover color *****/
+a:hover,
+#blog ul li article.link h1 a:hover,
+footer#site-footer a:hover,
+.widgets article.widget a:hover,
+#blog ul li article footer a:hover,
+#store-listing .categories li a,
+.sharing .share-buttons .share-label:hover,
+.sharing.open .share-buttons .share-label ,
+.menu .section-titles li a,
+#store-listing .categories li a
+{
+	color: {{{customize.colors.link_rollover}}};
+}
+
+.sharing .share-buttons ul 
+{
+	background-color: {{{customize.colors.link_rollover}}};
+}
+
+.opentable form#OT_form .OT_wrapper ul.OT_list li.OT_submit a.OT_Find_a_Table:hover {
+	background-color: {{{customize.colors.link_rollover}}};
+}
+
+
+/***** hover overlay color *****/
+#main-content .index ul li a {
+	background-color: {{{customize.colors.overlays}}};
+}
+
+
+/***** border color *****/
+hr,
+nav#main-nav ul li ul li a,
+nav#main-nav ul li ul li a:hover, 
+nav#main-nav ul li ul li.current a,
+nav#main-nav ul li .cart-link-small,
+#main-content .content-editor table,
+#main-content .content-editor table tr,
+#blog ul li > article,
+.widgets,
+.widgets article.widget ul,
+.widgets article.widget li,
+.widgets article.blank h2,
+#main-content .listing .listing-list li,
+#main-content .menu .menu-list li.menu-item,
+#main-content .menu section.content-editor,
+#main-content .listing section.content-editor,
+#main-content .menu.two-column ul.sub-items,
+#main-content .menu .menu-list li.menu-item.has-sub-items h2.section-title,
+#ui-datepicker-div.ui-datepicker,
+table.ui-datepicker-calendar thead tr,
+table.ui-datepicker-calendar tr,
+table.ui-datepicker-calendar tr td,
+.opentable form#OT_form .OT_wrapper ul.OT_list li input,
+.opentable form#OT_form .OT_wrapper ul.OT_list li .OT_navList,
+.ui-datepicker .ui-datepicker-header,
+#ui-datepicker-div .ui-datepicker-header:before,
+.ui-datepicker-calendar {
+	border-color: transparent;
+	border-color: {{{customize.colors.border_color}}};
+}
+
+
+/***** image border color *****/
+#main-content .horizontal-gallery .large-gallery li .media-container {
+	border-color: {{{customize.colors.image_border_color}}};
+}
+
+#main-content section img,
+.ie8 #main-content .masonry-gallery ul.thumbnails li img,
+.ie9 #main-content .masonry-gallery ul.thumbnails li img,
+#main-content section .video .video,
+.ie8 #main-content .masonry-gallery ul.thumbnails li .video,
+.ie9 #main-content .masonry-gallery ul.thumbnails li .video {
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5), 0px 0px 0px 1px {{{customize.colors.image_border_color}}};
+            box-shadow: 0 0 10px rgba(0,0,0,0.5), 0px 0px 0px 1px {{{customize.colors.image_border_color}}};
+}
+
+
+
+/***** site name font family *****/
+.logo h1,
+.logo h2 {
+	font-family: {{{customize.fonts.families.site_name}}};
+}
+
+
+/***** navigation font family *****/
+nav#main-nav,
+.cart-link {
+	font-family: {{{customize.fonts.families.nav}}};
+}
+
+
+/***** titles font family *****/
+#page-title,
+#blog h1#page-title a,
+#blog .quote blockquote p,
+#blog ul li article header h1 {
+	font-family: {{{customize.fonts.families.titles}}};
+}
+
+
+/***** primary font family *****/
+body, 
+#datepicker .ui-datepicker-header .ui-datepicker-title span.ui-datepicker-month,
+#datepicker .ui-datepicker-header .ui-datepicker-title span.ui-datepicker-year,
+#ui-datepicker-div .ui-datepicker-header .ui-datepicker-title span.ui-datepicker-month,
+#ui-datepicker-div .ui-datepicker-header .ui-datepicker-title span.ui-datepicker-year,
+.opentable form#OT_form .OT_wrapper ul.OT_list li.OT_submit a.OT_Find_a_Table {
+	font-family: {{{customize.fonts.families.body}}};
+}
+
+
+/**** global font size *****/
+body {
+	font-size: {{{customize.fonts.sizes.global}}};
+}
+
+
+/**** site title font size *****/
+.logo {
+	font-size: {{{customize.fonts.sizes.site_titles}}};
+}
+
+
+/**** navigation font size *****/
+nav#main-nav,
+.cart-link {
+	font-size: {{{customize.fonts.sizes.nav}}};
+}
+
+
+/**** page titles font size *****/
+#page-title,
+#blog h1#page-title {
+	font-size: {{{customize.fonts.sizes.page_titles}}};
+}
+
+
+/**** content font size *****/
+#main-content .content-editor {
+	font-size: {{{customize.fonts.sizes.content}}};
+}
+
+
+/**** widgets font size *****/
+.widgets {
+	font-size: {{{customize.fonts.sizes.widgets}}};
+}
+
+
+/**** footer font size *****/
+footer#site-footer {
+	font-size: {{{customize.fonts.sizes.footer}}};
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+	
+    .js nav#main-nav .toggle {
+        background-color: {{{customize.colors.border_color}}};
+    }
+    nav#main-nav .wraparound > ul {
+        background: none;
+    }
+    nav#main-nav ul li, nav#main-nav ul li.section {
+		border-color: transparent;
+		border-color: {{{customize.colors.border_color}}};
+    }
+    nav#main-nav #menu li.store { color: {{{customize.colors.border_color}}}; }
+	nav#main-nav ul li a:hover, nav#main-nav ul li.current a, nav#main-nav .toggle a {
+		background: none;
+		color: {{{customize.colors.nav_rollover}}};
+	}
+        nav#main-nav ul li.section.open span {
+            color: {{{customize.colors.secondary}}};
+        }
+        nav#main-nav ul li ul li {
+        	background-color: {{{customize.colors.overlays}}};
+        }
+	
+}

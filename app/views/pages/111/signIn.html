@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Advanced Security - PHP MySQL Register/Login System">
+        <meta name="author" content="Milos Stojanovic">
+        <title>Eclectic Models</title>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <?php if(BOOTSTRAP_VERSION == 2): ?>
+        <link rel='stylesheet' href='css/bootstrap.min2.css' type='text/css' media='all' />
+        <script type="text/javascript" src="js/bootstrap.min2.js"></script>
+        <link rel='stylesheet' href='ASLibrary/css/style2.css' type='text/css' media='all' />
+        <?php else: ?>
+        <link rel='stylesheet' href='css/bootstrap3-glyphicons/bootstrap-glyphicons.css' type='text/css' media='all' />
+        <link rel='stylesheet' href='css/bootstrap.min3.css' type='text/css' media='all' />
+        <script type="text/javascript" src="js/bootstrap.min3.js"></script>
+        <link rel='stylesheet' href='ASLibrary/css/style3.css' type='text/css' media='all' />
+        <?php endif; ?>
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/magnific-popup.css" rel="stylesheet">
+        <style type="text/css">
+          .modal-dialog {
+            margin-top: 200px;
+          }
+        </style>
+        <script type="text/javascript">
+        /*$(document).ready(function() {
+          alert($("#modeldialogDejo").height());
+          $("#modeldialogDejo").css('margin-top', $(window).height()/2 - $("#modeldialogDejo").height()/2 + 'px');          
+        });*/
+
+        </script>
+    </head>
+    <body>        
+        <div class="container">         
+         <div class="modal" id="loginModal" style="background:url(images/bgheaderblur.jpg) 0 0 repeat; background-size: cover;">
+             <div class="modal-dialog" >
+                 <div class="modal-content" id="modeldialogDejo">
+         
+          <div class="modal-body" style="background-color:#fff;">
+            <div>
+                <div>
+
+                    <div class="logo-div">
+                        <img id="medium-sized-logo" src="ASLibrary/img/logo.png"></img>
+                    </div>
+                      <!-- Div for messages -->
+                      <div style="text-align: center">                          
+                          <?php                            
+                            //print all return errors
+                            //this case shouldnt happen often
+                            //because we have validation on client side also   
+                           
+                            print("<br/>");
+                            if($errors["status"]=="error"){
+                                $err_count=count($errors["errors"]);
+                                for($i=0;$i<$err_count;$i++){
+                                    print('<span class="message">'.$errors["errors"][$i].'</span><br/>');                                    
+                                }
+                            }
+                            //case if user registered succesfully
+                            else if($errors["status"]=="success")
+                                print('<span style="color:green">'.$errors["msg"].'</span><br/>');                            
+                          ?>
+                      </div>
+                </div>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="login">
+                  <form class="form-horizontal">
+                    <fieldset>
+                      <div id="legend">
+                        <legend class="mini-header">Sign in to Model Portal</legend>
+                      </div>  
+                      <div class="control-group form-group" id="social-sign-in">
+                        <!-- Social Sign in-->
+                        <label class="control-label col-lg-4">Social sign in </label>
+                        <div class="controls col-lg-8">
+                          <form class="form-inline">
+                          <img width="64" id="login-facebook" src="ASLibrary/img/facebook.png"></img>
+                          <img width="64" id="login-google" src="ASLibrary/img/google.png"></img>
+                         
+                          </form>
+                        </div>
+                      </div>
+                      <div class="control-group form-group">
+                        <!-- Username -->
+                        <label class="control-label col-lg-4"  for="login-username">E-mail</label>
+                        <div class="controls col-lg-6">
+                          <input type="text" id="login-username" name="username" placeholder="" class="input-xlarge form-control invisible-input"> 
+                          <!-- Draws a line-->
+                          <div class="form-separator"></div>
+                        </div>                                                  
+                      </div>                             
+                      <div class="control-group form-group">
+                        <!-- Password-->
+                        <label class="control-label col-lg-4" for="login-password">Password</label>
+                        <div class="controls col-lg-6">
+                          <input type="password" id="login-password" name="password" placeholder="" class="input-xlarge form-control invisible-input">
+                          <!-- Draws a line-->
+                          <div class="form-separator"></div>
+                        </div>
+                    
+                      </div>
+                      <div class="row">
+                        <!-- Checkbox-->
+                        <div class="col-lg-offset-5 col-lg-4">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="stay-signed-in" value="true"> Stay Signed In  
+                            </label>
+                        </div>
+                        <!-- Button -->
+                        <div class="col-lg-2">
+                            <!-- add new type of button in style3.css-->
+                            <button type="button" id="btn-login" class="btn btn-grey btn-lg">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            </button>
+                        </div>
+                      </div>
+                      </br>
+                      <!-- Div for messages -->
+                      <div style="text-align: center">
+                          <span id="login-message" class="message" style="display:none"></span>
+                      </div>
+                    </fieldset>
+                    <div class="apply-div" style="border-top: 1px solid #E5E5E5; padding: 20px 0px 0px;">
+                        <p style="float: left; line-height: 30px;">NOT A MEMBER YET?</p>
+                        <a href="#" style="float: right; color: #fff; font-style:normal; font-size 16px;" class="btn btn-default" id="btn-create-account">Create Account</a>
+                        <div class="clearfix"></div>
+                    </div>
+                  </form>                
+                </div>                                  
+            </div>
+          </div>
+        </div>           
+        </div>           
+             </div>  
+                <div  style="background: none;" class="login-footer">
+                <form class="form-inline" role="form" style="background: none;">  
+                    
+                    <ol class="breadcrumb login-footer-list">                        
+                        <li><a href="forgotPassword.php" style="color:#fff">Forgot Password?</a></li>
+                        <li><a href="#" style="color:#fff">Privacy Policy</a></li>
+                        <li><a href="#" style="color:#fff">E-Models 2013 &copy;</a></li>
+                    </ol>
+                </form> 
+                    </div>  
+             </div>  
+	         <script type="text/javascript">
+	 setTimeout(function(){var a=document.createElement("script");
+	 var b=document.getElementsByTagName("script")[0];
+	 a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0019/1952.js?"+Math.floor(new Date().getTime()/3600000);
+	 a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+	 </script>
+			 
+            <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>        
+            <script type="text/javascript" src="js/sha512.js"></script>
+            <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>            
+            <script type="text/javascript" src="ASLibrary/js/asengine.js"></script>            
+            <script type="text/javascript" src="ASLibrary/js/login.js"></script>  
+            <script src="http://connect.facebook.net/en_US/all.js"></script>  
+            <script type="text/javascript">
+                $(document).ready(function () {
+                   $("#loginModal").modal({
+                       keyboard: false,
+                       backdrop: "static"
+                   }); 
+                });
+            </script>
+    </body>
+</html>
